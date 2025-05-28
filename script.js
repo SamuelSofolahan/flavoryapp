@@ -147,11 +147,23 @@ searchBtn.addEventListener("click", function (e) {
             //☝️===============================================
 
             //👇===============================================
-            // Filter Item 💥💥💥💥 ❌ Yet to implement
+            // Filter Item 💥💥💥💥 ❌ ✅
             const filterInput = document.querySelector("#filter-favorites");
 
-            filterInput.addEventListener("keyup", function () {
-              console.log(filterInput.value);
+            filterInput.addEventListener("keyup", function (e) {
+              const term = e.target.value.toLowerCase();
+              const listUl = document
+                .querySelector("#favorites-list")
+                .getElementsByTagName("li");
+
+              Array.from(listUl).map((element) => {
+                const li = element.firstElementChild.textContent;
+                if (li.toLowerCase().indexOf(term) != -1) {
+                  element.style.display = "flex";
+                } else {
+                  element.style.display = "none";
+                }
+              });
             });
             //☝️===============================================
           };
