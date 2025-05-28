@@ -6,9 +6,10 @@ const recipeDetails = document.querySelector(".details-section");
 searchBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
-  if (!searchInput.value) {
-    console.log("Kindly enter a recipe");
-  }
+  // if (!searchInput.value) {
+  //   console.log("Kindly enter a recipe");
+  // }
+  if (!searchInput.value.trim()) return alert("Please enter a recipe name.");
 
   async function fetchAPI() {
     try {
@@ -192,7 +193,6 @@ searchBtn.addEventListener("click", function (e) {
     }
   }
   fetchAPI();
-
   console.log("Fetching response object in 1, 2, 3...");
 
   searchInput.value = "";
